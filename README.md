@@ -4,7 +4,7 @@ Created by Jasmine Angle :D
 
 ## Interpreter Behavior
 
-- The interpreter must track varying state variables, each of which describe varying aspects of one's thoughts (feelings, insights, memories, etc.).
+- The interpreter must track varying state variables, each of which describe varying aspects of one's thoughts (feelings, insights, memories, etc.). Variables are loosely typed, in that a memory can become a feeling, though if this occurs and no other reference exists, then the variable is deemed overwritten.
 - Truth values are logically evaluated when a reflection occurs.
 - In a similar manner as general cognitive patterns, ruminations persist until a resolution is reached.
 - Breakthroughs represent successful program exits. If there is a session that does not have an understood truth, the session remains unresolved and raises an error.
@@ -49,6 +49,57 @@ A few functions exist to conveniently work with differing data types.
 - `max of <x>`: Computes the maximum of all feelings in a memory.
 - `min of <x>`: Computes the minimum of all feelings in a memory.
 
+## Wounds (Strings)
+
+Wounds represent textual symbolism of psychological pain points, which can be erased or shared with the Therapist. 
+
+### Declaration
+
+| Phrase | Meaning | Example |
+|--------|---------|---------|
+|`I carry a wound called <wound>.` | Declares a new wound with the provided `wound` name. | `I carry around a wound called abandonment.`
+|`I carry a wound called <wound> that says "".` | Declares a new wound with the provided `wound` name and a default string value. | `I carry around a wound called abandonment that says "They left when I needed them the most".`
+
+### Example
+
+```
+Session begins.
+
+I carry a wound called core_wound that says "I was always compared to others".
+I carry a wound called shame.
+
+I open my wound shame and speak "I failed when it mattered most".
+I open my wound shame and whisper ", and I haven't forgiven myself".
+
+My therapist asks: "Would you like to talk about your shame?" => consent.
+I realize consent_is_yes as consent == "yes".
+
+When I reflect on consent_is_yes,
+I realize:
+  I tell my therapist: shame.
+Otherwise:
+  I choose not to speak of shame.
+
+I let go of core_wound.
+
+I accept that I'm_enough might be true.
+I finally understand I'm_enough.
+Session ends.
+```
+
+### Assignment and Modification
+
+Wounds are mutable in that they can be opened and spoken to, appending the new text to the wound.
+
+### Unspoken Wounds
+
+If there is wound that should be suppressed, or blocked from disclosure to the Therapist, you may choose not to speak of the wound. This only marks the wound as *unspoken*.
+
+| Phrase | Meaning | Example |
+|--------|---------|---------|
+|`I choose not to speak of <wound>.` | Blocks the wound from disclosure to the Therapist. | `I choose not to speak of abandonment.`
+|`I'm ready to speak of <wound>.` | Allows the wound to be disclosed to the Therapist. | `I'm ready to speak of abandonment.`
+
 ## Reflections (Conditionals)
 
 Reflections are introspective thoughts, contemplating a variable and acting upon it in varying ways. Reflections evaluate the *truthiness* of a variable, which is defined as follows:
@@ -75,7 +126,7 @@ Memories are a type of `variable` that represents one's past events through hold
 |--------|---------|---------|
 |`I remember <memory> vividly.` | Declares a new memory with the provided `memory` name. | `I recall childhood_trauma vividly.`
 
-### Memory Modification
+### Assignment and Modification
 
 When adding variables to a memory, there are certain conventions followed for pointer or reference copying:
 
@@ -123,13 +174,13 @@ I keep thinking:
   <statements>
 ```
 
-## Repression (Variable Deletion)
+## Letting Go (Variable Deletion)
 
-To delete a variable, therapylang supports repressed feelings, memories, wounds, and truths. This can be particularly useful for sifting through a memory that holds varying types.
+To delete a variable, therapylang supports letting go of feelings, memories, wounds, and truths. This can be particularly useful for sifting through a memory that holds varying types.
 
 | Phrase | Meaning |
 |--------|---------|
-|`I repress my <variable>.` | Deletes a `variable` within the current scope. |
+|`I let go of <variable>.` | Deletes a `variable` within the current scope. |
 
 ## Breakthroughs
 
@@ -143,9 +194,9 @@ Session ends.
 
 ## Therapist Interaction (I/O)
 
-Throughout the execution of your program, a therapist (`STDOUT`) is always available to talk to. Your therapist can also ask you questions (`STDIN`).
+Throughout the execution of your program, the Therapist (`STDOUT`) is always available to talk to. the Therapist can also ask you questions (`STDIN`).
 
 | Phrase | Meaning |
 |--------|---------|
-|`I tell my therapist: <value>` | Discloses any value to your therapist (`STDOUT`). |
-|`My therapist asks: <question> => <insight>` | Prompts a response from you via `STDIN` to give to your therapist. Your response is stored as a wound insight. |
+|`I tell my therapist: <value>` | Discloses any value to the Therapist (`STDOUT`). |
+|`My therapist asks: <question> => <insight>` | Prompts a response from you via `STDIN` to give to the Therapist. Your response is stored as a wound. |
