@@ -194,7 +194,7 @@ Session ends.
 
 ## Therapist Interaction (I/O)
 
-Throughout the execution of your program, the Therapist (`STDOUT`) is always available to talk to. the Therapist can also ask you questions (`STDIN`).
+Throughout the execution of your program, the Therapist (`STDOUT`) is always available to talk to. The Therapist can also ask you questions (`STDIN`).
 
 | Phrase | Meaning |
 |--------|---------|
