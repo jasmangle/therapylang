@@ -124,7 +124,7 @@ Memories are a type of `variable` that represents one's past events through hold
 
 | Phrase | Meaning | Example |
 |--------|---------|---------|
-|`I remember <memory> vividly.` | Declares a new memory with the provided `memory` name. | `I recall childhood_trauma vividly.`
+|`I remember <memory> vividly.` | Declares a new memory with the provided `memory` name. | `I remember childhood_trauma vividly.`
 
 ### Assignment and Modification
 
